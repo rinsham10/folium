@@ -1,0 +1,27 @@
+body{
+    font-family: sans-serif;
+    text-align: center;
+    padding-top: 100px;
+    background: #f9f9f9;
+}
+
+h1{
+    font-size: 3rem;
+    margin-bottom: 20px;
+}   
+
+p{
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn {
+padding: 12px 30px;
+font-size: 1rem;
+background-color: #4CAF50;
+color: white;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+text-decoration: none;
+}

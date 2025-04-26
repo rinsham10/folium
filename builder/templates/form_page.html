@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Build Your Portfolio</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script>
+    // JavaScript function to dynamically add more fields
+    function addField(section) {
+      var container = document.getElementById(section);
+      var newEntry = document.createElement('div');
+      newEntry.classList.add('entry');
+      
+      if (section === 'projects') {
+        newEntry.innerHTML = `
+          <label for="project_title">Project Title:</label>
+          <input type="text" name="project_title[]" placeholder="Project Title"><br>
+          
+          <label for="project_desc">Project Description:</label>
+          <textarea name="project_desc[]" placeholder="Project Description"></textarea><br>
+          
+          <label for="project_stack">Project Stack:</label>
+          <input type="text" name="project_stack[]" placeholder="Tech Stack"><br>
+          
+          <label for="project_link">Project Link:</label>
+          <input type="text" name="project_link[]" placeholder="Project Link"><br>
+        `;
+      } else if (section === 'experience') {
+        newEntry.innerHTML = `
+          <label for="job_title">Job Title:</label>
+          <input type="text" name="job_title[]" placeholder="Job Title"><br>
+          
+          <label for="company_name">Company Name:</label>
+          <input type="text" name="company_name[]" placeholder="Company Name"><br>
+          
+          <label for="job_desc">Job Description:</label>
+          <textarea name="job_desc[]" placeholder="Job Description"></textarea><br>
+          
+          <label for="duration">Duration:</label>
+          <input type="text" name="duration[]" placeholder="Duration"><br>
+        `;
+      } else if (section === 'education') {
+        newEntry.innerHTML = `
+          <label for="degree">Degree:</label>
+          <input type="text" name="degree[]" placeholder="Degree"><br>
+          
+          <label for="school">School Name:</label>
+          <input type="text" name="school[]" placeholder="School Name"><br>
+          
+          <label for="edu_desc">Education Description:</label>
+          <textarea name="edu_desc[]" placeholder="Education Description"></textarea><br>
+        `;
+      }
+      container.appendChild(newEntry);
+    }
+  </script>
+</head>
+<body>
+
+  <h1>Build Your Portfolio</h1>
+  <h2>Selected Template: {{ template }}</h2>
+
+  <form method="post" action="{% url 'submit_portfolio' %}">
+    {% csrf_token %}
+
+    <!-- Basic Information -->
+    <label for="name">Full Name:</label>
+    <input type="text" name="name" id="name" required><br>
+
+    <!-- Bio Section -->
+    <label for="bio">Bio:</label>
+    <textarea name="bio" id="bio"></textarea><br>
+
+     <!-- Skills Section -->
+     <h3>Skills</h3>
+     <label for="skills">Enter your skills (separate with commas):</label>
+     <input type="text" name="skills" id="skills"><br>
+
+    <!-- Projects Section -->
+    <h3>Projects</h3>
+    <div id="projects">
+      <div class="entry">
+        <label for="project_title_1">Project Title 1:</label>
+        <input type="text" name="project_title[]" id="project_title_1" placeholder="Project Title"><br>
+        
+        <label for="project_desc_1">Project Description 1:</label>
+        <textarea name="project_desc[]" id="project_desc_1" placeholder="Project Description"></textarea><br>
+        
+        <label for="project_stack_1">Project Stack 1:</label>
+        <input type="text" name="project_stack[]" id="project_stack_1" placeholder="Tech Stack"><br>
+        
+        <label for="project_link_1">Project Link 1:</label>
+        <input type="text" name="project_link[]" id="project_link_1" placeholder="Project Link"><br>
+      </div>
+    </div>
+    <button type="button" onclick="addField('projects')">Add More Projects</button><br>
+
+    <!-- Experience Section -->
+    <h3>Experience</h3>
+    <div id="experience">
+      <div class="entry">
+        <label for="job_title_1">Job Title 1:</label>
+        <input type="text" name="job_title[]" id="job_title_1" placeholder="Job Title"><br>
+        
+        <label for="company_name_1">Company Name 1:</label>
+        <input type="text" name="company_name[]" id="company_name_1" placeholder="Company Name"><br>
+        
+        <label for="job_desc_1">Job Description 1:</label>
+        <textarea name="job_desc[]" id="job_desc_1" placeholder="Job Description"></textarea><br>
+        
+        <label for="duration_1">Duration 1:</label>
+        <input type="text" name="duration[]" id="duration_1" placeholder="Duration"><br>
+      </div>
+    </div>
+    <button type="button" onclick="addField('experience')">Add More Experience</button><br>
+
+    <!-- Education Section -->
+    <h3>Education</h3>
+    <div id="education">
+      <div class="entry">
+        <label for="degree_1">Degree 1:</label>
+        <input type="text" name="degree[]" id="degree_1" placeholder="Degree"><br>
+        
+        <label for="school_1">School Name 1:</label>
+        <input type="text" name="school[]" id="school_1" placeholder="School Name"><br>
+        
+        <label for="edu_desc_1">Education Description 1:</label>
+        <textarea name="edu_desc[]" id="edu_desc_1" placeholder="Education Description"></textarea><br>
+      </div>
+    </div>
+    <button type="button" onclick="addField('education')">Add More Education</button><br>
+
+    <!-- Social Links -->
+    <label for="github">GitHub:</label>
+    <input type="url" name="github" id="github" placeholder="Your GitHub URL"><br>
+
+    <label for="linkedin">LinkedIn:</label>
+    <input type="url" name="linkedin" id="linkedin" placeholder="Your LinkedIn URL"><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>

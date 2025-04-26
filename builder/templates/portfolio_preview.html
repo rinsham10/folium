@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }}'s Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <h1>{{ name }}'s Portfolio</h1>
+   
+    {% if title %}
+    <p><strong>Title:</strong> {{ title }}</p>
+  {% endif %}
+  
+
+    {% if bio %}
+    <p><strong>Bio:</strong> {{ bio }}</p>
+    {% endif %}
+  
+    {% if skills %}
+        <h3>Skills:</h3>
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if project_data %}
+        <h3>Projects:</h3>
+        {% for project in project_data %}
+            <p><strong>Title:</strong> {{ project.title }}</p>
+            <p><strong>Description:</strong> {{ project.description }}</p>
+            <p><strong>Tech Stack:</strong> {{ project.stack }}</p>
+            <p><strong>Project Link:</strong> <a href="{{ project.link }}" target="_blank">{{ project.link }}</a></p>
+            <hr>
+        {% endfor %}
+    {% endif %}
+
+    {% if experience %}
+        <h3>Experience:</h3>
+        {% for exp in experience %}
+            <p><strong>Job Title:</strong> {{ exp.job_title }}</p>
+            <p><strong>Company:</strong> {{ exp.company_name }}</p>
+            <p><strong>Description:</strong> {{ exp.job_desc }}</p>
+            <p><strong>Duration:</strong> {{ exp.duration }}</p>
+            <hr>
+        {% endfor %}
+    {% endif %}
+
+    {% if education %}
+        <h3>Education:</h3>
+        {% for edu in education %}
+            <p><strong>Degree:</strong> {{ edu.degree }}</p>
+            <p><strong>School:</strong> {{ edu.school }}</p>
+            <p><strong>Description:</strong> {{ edu.edu_desc }}</p>
+            <hr>
+        {% endfor %}
+    {% endif %}
+ <!-- Only show social links if provided -->
+ {% if github or linkedin %}
+ <h3>Social Links</h3>
+ {% if github %}
+   <p><strong>GitHub:</strong> <a href="{{ github }}" target="_blank">{{ github }}</a></p>
+ {% endif %}
+ {% if linkedin %}
+   <p><strong>LinkedIn:</strong> <a href="{{ linkedin }}" target="_blank">{{ linkedin }}</a></p>
+ {% endif %}
+{% endif %}
+</body>
+</html>

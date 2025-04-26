@@ -1,0 +1,135 @@
+/* Body styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1abc9c, #16a085); /* Teal gradient background */
+    color: #f4f4f4;  /* Light text color to contrast against the background */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Heading style */
+h1 {
+    font-size: 3.5rem;
+    color: #ffffff;
+    margin-top: 50px;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for better readability */
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Paragraph styling */
+p {
+    font-size: 1.2rem;
+    color: #f0f0f0;
+    margin-top: 10px;
+    font-weight: 400;
+    animation: fadeIn 1.8s ease-in-out;
+    margin-bottom: 40px;  /* Added bottom margin for spacing */
+}
+
+/* Container for templates */
+.template-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    gap: 30px;  /* More spacing between items */
+    padding: 0 10px;
+    max-width: 1200px;
+    margin: 40px auto; /* Center the container */
+}
+
+/* Style for each template preview */
+.template-preview {
+    border: 2px solid #1abc9c; /* Teal border */
+    padding: 20px;
+    text-align: center;
+    width: 22%;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Subtle shadow with more depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth scaling and shadow effect */
+    overflow: hidden;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Hover effect for template preview */
+.template-preview:hover {
+    transform: translateY(-10px); /* Slight upward movement */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+/* Title styling inside template preview */
+.template-preview h3 {
+    font-size: 1.6rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* Image styles inside template preview */
+.template-preview img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;  /* Cover the container area without distortion */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+/* Image hover effect */
+.template-preview img:hover {
+    transform: scale(1.05);  /* Slight zoom-in on hover */
+}
+
+/* Button styles inside template preview */
+.template-preview button {
+    margin-top: 10px;
+    padding: 12px 25px;
+    background-color: #1abc9c; /* Teal button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+}
+
+/* Button hover effect */
+.template-preview button:hover {
+    background-color: #16a085; /* Darker teal when hovered */
+    transform: scale(1.05); /* Slightly enlarge the button */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+/* Add responsive design for smaller screens */
+@media (max-width: 768px) {
+    .template-preview {
+        width: 48%;  /* Adjust the width of the templates for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .template-preview {
+        width: 100%;  /* Make each template take up full width on very small screens */
+    }
+}
+
+/* Add keyframe animation for fading in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

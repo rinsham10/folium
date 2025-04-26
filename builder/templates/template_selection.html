@@ -3,47 +3,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="{% static 'css/template_selection.css' %}">
+
   <title>Select your Template</title>
-  <style>
-    .template-container {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-      flex-wrap: wrap;  /* This allows the items to wrap to the next line if there is not enough space */
-    }
-    .template-preview {
-      border: 1px solid #ddd;
-      padding: 20px;
-      text-align: center;
-      width: 22%;  /* Adjusted width to fit more templates in a row */
-      box-sizing: border-box;
-      background-color: #f9f9f9;
-      margin-bottom: 20px;  /* Added margin-bottom to give spacing when items wrap */
-    }
-    .template-preview h3 {
-      font-size: 1.5rem;
-      color: #2c3e50;
-      margin-bottom: 10px;
-    }
-    .template-preview img {
-      width: 100%;
-      height: 200px;  /* Set the fixed height */
-      object-fit: contain;  /* Ensures the image is fully visible while preserving its aspect ratio */
-      border-radius: 8px;
-    }
-    .template-preview button {
-      margin-top: 10px;
-      padding: 10px;
-      background-color: #3498db;
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    .template-preview button:hover {
-      background-color: #2980b9;
-    }
-  </style>
 </head>
 <body>
   <h1>Select a Portfolio Template</h1>

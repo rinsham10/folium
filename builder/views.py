@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
+
 def home(request):
     return render(request, 'index.html')
+
 def template_selection(request):
     return render(request, 'template_selection.html')
-from django.shortcuts import render, redirect
 
 def build_portfolio(request):
     if request.method == "POST":
@@ -11,7 +12,6 @@ def build_portfolio(request):
         request.session['selected_template'] = selected_template
         return render(request, 'form_page.html', {'template': selected_template})
     return redirect('select_template')
-from django.shortcuts import render
 
 def submit_portfolio(request):
     if request.method == "POST":
@@ -75,7 +75,7 @@ def submit_portfolio(request):
                     'link': project_links[i]
                 })
 
-         # Get the selected template from session
+        # Get the selected template from session
         selected_template = request.session.get('selected_template', 'template1')  # Default to template1 if not selected
 
         # Pass the collected data and the selected template to the respective template
@@ -94,11 +94,10 @@ def submit_portfolio(request):
         # Add more templates as required (template2, template3, etc.)
         # elif selected_template == 'template2':
         #     return render(request, 'template2.html', {...})
+    return redirect('home')
 
-
-        
 def template1_view(request):
-    # Add any context data you want to pass to the template
+    # Example context data to pass to the template (you can remove this if you want dynamic data)
     context = {
         'name': 'John Doe',  # Example data
         'bio': 'I am a passionate developer',  # Example bio
@@ -108,4 +107,3 @@ def template1_view(request):
         'linkedin': 'https://linkedin.com/in/johndoe'  # Example LinkedIn link
     }
     return render(request, 'template1.html', context)
-    return redirect('select_template')

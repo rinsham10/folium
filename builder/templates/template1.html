@@ -16,7 +16,7 @@
         <p class="bio">{{ bio }}</p>
       {% endif %}
     </header>
-  
+
     <!-- Skills section, only appears if skills are provided -->
     {% if skills %}
       <section class="skills">
@@ -28,7 +28,7 @@
         </ul>
       </section>
     {% endif %}
-  
+
     <!-- Projects section, only appears if there are projects -->
     {% if project_data %}
       <section class="projects">
@@ -38,12 +38,44 @@
             <li class="project">
               <a href="{{ project.link }}" class="project-link" target="_blank">{{ project.title }}</a>
               <p>{{ project.description }}</p>
+              <p><strong>Tech Stack:</strong> {{ project.stack }}</p>
             </li>
           {% endfor %}
         </ul>
       </section>
     {% endif %}
-  
+
+    <!-- Experience section, only appears if there is experience data -->
+    {% if experience %}
+      <section class="experience">
+        <h3>Experience</h3>
+        <ul>
+          {% for exp in experience %}
+            <li class="experience-item">
+              <h4>{{ exp.job_title }} at {{ exp.company_name }}</h4>
+              <p>{{ exp.job_desc }}</p>
+              <p><strong>Duration:</strong> {{ exp.duration }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    <!-- Education section, only appears if there is education data -->
+    {% if education %}
+      <section class="education">
+        <h3>Education</h3>
+        <ul>
+          {% for edu in education %}
+            <li class="education-item">
+              <h4>{{ edu.degree }} from {{ edu.school }}</h4>
+              <p>{{ edu.edu_desc }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
     <!-- Social Links section, only appears if both GitHub and LinkedIn are provided -->
     {% if github or linkedin %}
       <section class="social-links">

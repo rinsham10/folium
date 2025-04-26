@@ -18,16 +18,30 @@ a {
   font-size: 3rem;
   color: #ccd6f6;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .hero {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center; /* Center horizontally */
   min-height: 100vh;
+  text-align: center; /* Center text */
   padding: 0 2rem;
 }
+
+.subtitle {
+  max-width: 800px; /* Limit max width to 800px (adjustable) */
+  color: #8892b0;
+  margin: 1rem 0 1rem;
+  font-size: 1.5rem;
+  line-height: 1.6; /* Make text a bit more readable */
+  word-wrap: break-word; /* Break long words onto new lines */
+  word-break: break-word; /* Prevent very long words from overflowing */
+}
+
+
 
 .intro {
   color: #64ffda;
@@ -39,13 +53,6 @@ a {
   font-weight: bold;
   color: #ccd6f6;
   margin: 0.5rem 0;
-}
-
-.subtitle {
-  max-width: 500px;
-  color: #8892b0;
-  margin: 1rem 0 1rem;
-  font-size: 1.5rem;
 }
 
 .cta-button {
@@ -154,4 +161,35 @@ footer {
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
+}
+
+.side-nav {
+  position: fixed;
+  top: 50%;
+  left: 2rem;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.side-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-nav li {
+  margin: 1rem 0;
+}
+
+.side-nav a {
+  color: #8892b0;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.side-nav a:hover {
+  color: #64ffda;
 }

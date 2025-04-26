@@ -75,17 +75,37 @@ def submit_portfolio(request):
                     'link': project_links[i]
                 })
 
-        # Pass the collected data to the template for preview
-        return render(request, 'portfolio_preview.html', {
-            'name': name,
-            'title': title,
-            'bio': bio,
-            'skills': skills_list,  # Now it's a list of skills
-            'project_data': project_data,  # List of projects
-            'experience': experience,  # List of experiences
-            'education': education,  # List of education
-            'github': github,
-            'linkedin': linkedin
-        })
+         # Get the selected template from session
+        selected_template = request.session.get('selected_template', 'template1')  # Default to template1 if not selected
 
+        # Pass the collected data and the selected template to the respective template
+        if selected_template == 'template1':
+            return render(request, 'template1.html', {
+                'name': name,
+                'title': title,
+                'bio': bio,
+                'skills': skills_list,
+                'project_data': project_data,
+                'experience': experience,
+                'education': education,
+                'github': github,
+                'linkedin': linkedin
+            })
+        # Add more templates as required (template2, template3, etc.)
+        # elif selected_template == 'template2':
+        #     return render(request, 'template2.html', {...})
+
+
+        
+def template1_view(request):
+    # Add any context data you want to pass to the template
+    context = {
+        'name': 'John Doe',  # Example data
+        'bio': 'I am a passionate developer',  # Example bio
+        'skills': ['Python', 'Django', 'JavaScript'],  # Example skills
+        'project_data': [{'title': 'Project 1', 'description': 'Description of Project 1', 'link': 'https://example.com'}],  # Example project
+        'github': 'https://github.com/johndoe',  # Example GitHub link
+        'linkedin': 'https://linkedin.com/in/johndoe'  # Example LinkedIn link
+    }
+    return render(request, 'template1.html', context)
     return redirect('select_template')

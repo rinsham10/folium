@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }}'s Portfolio</title>
+    <link rel="stylesheet" href="{% static 'css/template1.css' %}">
+</head>
+<body>
+  <div class="template1">
+    <header class="header">
+      <h2>{{ name }}'s Portfolio</h2>
+      
+      <!-- Bio section only appears if bio exists -->
+      {% if bio %}
+        <p class="bio">{{ bio }}</p>
+      {% endif %}
+    </header>
+  
+    <!-- Skills section, only appears if skills are provided -->
+    {% if skills %}
+      <section class="skills">
+        <h3>Skills</h3>
+        <ul>
+          {% for skill in skills %}
+            <li>{{ skill }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+  
+    <!-- Projects section, only appears if there are projects -->
+    {% if project_data %}
+      <section class="projects">
+        <h3>Projects</h3>
+        <ul>
+          {% for project in project_data %}
+            <li class="project">
+              <a href="{{ project.link }}" class="project-link" target="_blank">{{ project.title }}</a>
+              <p>{{ project.description }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+  
+    <!-- Social Links section, only appears if both GitHub and LinkedIn are provided -->
+    {% if github or linkedin %}
+      <section class="social-links">
+        <h3>Social Links</h3>
+        {% if github %}
+          <p><a href="{{ github }}" target="_blank" class="social-link">GitHub</a></p>
+        {% endif %}
+        {% if linkedin %}
+          <p><a href="{{ linkedin }}" target="_blank" class="social-link">LinkedIn</a></p>
+        {% endif %}
+      </section>
+    {% endif %}
+  </div>
+</body>
+</html>

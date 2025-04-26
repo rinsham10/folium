@@ -1,32 +1,42 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600&display=swap');
+
 /* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif; /* Changed to Roboto */
     background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
     min-height: 100vh;
     padding: 4rem 1rem;
     color: #333;
     animation: fadeIn 1s ease-in;
-    display: block; /* ⛔️ Remove flex layout */
+    display: block;
 }
-
-
-h1 ,h2,h3{
+h1{
     margin-bottom: 2rem;
     text-align: center;
+    font-family: 'Poppins', sans-serif; /* Changed to Poppins */
+    font-size: 3rem;
+    color: #000000;
+}
+
+ h2, h3 {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: 'Poppins', sans-serif; /* Changed to Poppins */
     font-size: 2rem;
     color: #000000;
 }
 
-
 form {
     width: 100%;
     max-width: 900px;
-    margin: 0 auto; /* ✅ Center horizontally */
+    margin: 0 auto;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     border-radius: 20px;
@@ -94,14 +104,6 @@ button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-button[type="button"] {
-    background-color: #007bff;
-}
-
-button[type="button"]:hover {
-    background-color: #0056b3;
-}
-
 /* Section titles */
 h3 {
     margin-top: 2rem;
@@ -117,3 +119,86 @@ h3 {
     }
 }
 
+/* Floating background elements */
+.background-floaters {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.floater {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: floatAround 20s linear infinite;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.floater:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    animation-duration: 25s;
+    top: 20%;
+    left: 15%;
+}
+
+.floater:nth-child(2) {
+    width: 50px;
+    height: 50px;
+    animation-duration: 18s;
+    top: 70%;
+    left: 80%;
+}
+
+.floater:nth-child(3) {
+    width: 70px;
+    height: 70px;
+    animation-duration: 22s;
+    top: 40%;
+    left: 70%;
+}
+
+.floater:nth-child(4) {
+    width: 90px;
+    height: 90px;
+    animation-duration: 30s;
+    top: 75%;
+    left: 25%;
+}
+
+.floater:nth-child(5) {
+    width: 40px;
+    height: 40px;
+    animation-duration: 20s;
+    top: 10%;
+    left: 50%;
+}
+
+.floater:nth-child(6) {
+    width: 100px;
+    height: 100px;
+    animation-duration: 35s;
+    top: 60%;
+    left: 10%;
+}
+
+/* Floating animation */
+@keyframes floatAround {
+    0% {
+        transform: translate(-50%, -50%) translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) translate(30px, -30px) rotate(180deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) translate(0, 0) rotate(360deg);
+    }
+}

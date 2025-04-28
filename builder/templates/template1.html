@@ -18,7 +18,9 @@
 <body>
 <nav class="side-nav">
   <ul>
+    {% if skills %}
     <li><a href="#about">Skills</a></li>
+    {% endif %}
     {% if project_data %}
       <li><a href="#projects">Projects</a></li>
     {% endif %}
@@ -139,6 +141,7 @@
     once: true,  // whether animation should happen only once
   });
 </script>
+
 
 </body>
 </html>

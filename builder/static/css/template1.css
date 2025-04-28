@@ -170,6 +170,8 @@ footer {
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
+  padding-right: 1.5rem; /* Add some space for the border */
+  border-right: 2px solid #64ffda; /* Vertical line */
   z-index: 999;
 }
 
@@ -186,7 +188,8 @@ footer {
 .side-nav a {
   color: #8892b0;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.1rem; /* Slightly bigger text */
+  font-weight: 500;   /* Make it more visible */
   transition: color 0.3s;
 }
 

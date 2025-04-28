@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="{% static 'css/template_selection.css' %}">
-
   <title>Select your Template</title>
 </head>
 <body>
@@ -17,59 +16,45 @@
     <div class="floater"></div>
     <div class="floater"></div>
     <div class="floater"></div>
-</div>
-
-  
+  </div>
   <h1>Select a Portfolio Template</h1>
   <p>Choose one of the following templates to start customizing:</p>
 
-  <div class="template-container">
-    <!-- Template 1 -->
-    <div class="template-item">
-      <div class="template-preview">
-        <img src="{% static 'images/template1_preview.png' %}" alt="Template 1 Preview">
-      </div>
-      <form method="post" action="{% url 'form_page' %}">
-        {% csrf_token %}
-        <button type="submit" name="template" value="template1">Select Template 1</button>
-      </form>
-    </div>
-  
-    <!-- Template 2 -->
-    <div class="template-item">
-      <div class="template-preview">
-        <img src="{% static 'images/template2_preview.png' %}" alt="Template 2 Preview">
-      </div>
-      <form method="post" action="{% url 'form_page' %}">
-        {% csrf_token %}
-        <button type="submit" name="template" value="template2">Select Template 2</button>
-      </form>
-    </div>
-  
-    <!-- Template 3 -->
-    <div class="template-item">
-      <div class="template-preview">
-        <img src="{% static 'images/template3_preview.png' %}" alt="Template 3 Preview">
-      </div>
-      <form method="post" action="{% url 'form_page' %}">
-        {% csrf_token %}
-        <button type="submit" name="template" value="template3">Select Template 3</button>
-      </form>
-    </div>
-  
-    <!-- Template 4 -->
-    <div class="template-item">
-      <div class="template-preview">
-        <img src="{% static 'images/template4_preview.png' %}" alt="Template 4 Preview">
-      </div>
-      <form method="post" action="{% url 'form_page' %}">
-        {% csrf_token %}
-        <button type="submit" name="template" value="template4">Select Template 4</button>
-      </form>
-    </div>
+  <!-- Directly placing the preview image without template-item wrapper -->
+   <h1>Template 1</h1>
+  <div class="template-preview">
+    <img id="main-image" src="{% static 'images/template1_preview.png' %}" alt="Template 1 Preview">
   </div>
   
+  <!-- Thumbnails for additional images -->
+  <div class="thumbnail-container">
+    <img class="thumbnail" src="{% static 'images/template1_section1.png' %}" alt="Template Section 1" onclick="changePreviewImage(this)">
+    <img class="thumbnail" src="{% static 'images/template1_section2.png' %}" alt="Template Section 2" onclick="changePreviewImage(this)">
+    <!-- Add more images as needed -->
   </div>
+  
+  <form method="post" action="{% url 'form_page' %}">
+    {% csrf_token %}
+    <button type="submit" name="template" value="template1">Select Template 1</button>
+  </form>
+
+  <h1>Template 2</h1>
+  <div class="template-preview">
+    <img id="main-image" src="{% static 'images/template2_preview.png' %}" alt="Template 1 Preview">
+  </div>
+  
+  <!-- Thumbnails for additional images -->
+  <div class="thumbnail-container">
+    <img class="thumbnail" src="{% static 'images/template1_section1.png' %}" alt="Template Section 1" onclick="changePreviewImage(this)">
+    <img class="thumbnail" src="{% static 'images/template1_section2.png' %}" alt="Template Section 2" onclick="changePreviewImage(this)">
+    <!-- Add more images as needed -->
+  </div>
+  
+  <form method="post" action="{% url 'form_page' %}">
+    {% csrf_token %}
+    <button type="submit" name="template" value="template1">Select Template 2</button>
+  </form>
+
   <script>
     document.addEventListener('mousemove', function(e) {
         const floaters = document.querySelectorAll('.floater');
@@ -85,7 +70,12 @@
             floater.style.transform = `translate(${x}px, ${y}px) rotate(${index * 45}deg)`;
         });
     });
-    </script>
-    
+
+    // Function to change the main preview image when a thumbnail is clicked
+    function changePreviewImage(thumbnail) {
+        var mainImage = document.getElementById('main-image');
+        mainImage.src = thumbnail.src; // Update the main image source with the thumbnail's source
+    }
+  </script>
 </body>
 </html>

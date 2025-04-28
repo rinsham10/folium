@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- Add AOS CSS -->
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
   html {
     scroll-behavior: smooth;
@@ -115,20 +117,34 @@
   <footer id="contact">
     <h3 class="section-title">Get In Touch</h3>
     <p>I’m currently looking for new opportunities. Feel free to say hi!</p>
-    {% if github %}
-      <a href="{{ github }}" class="footer-link" target="_blank">GitHub</a>
-    {% endif %}
-    {% if linkedin %}
-      <a href="{{ linkedin }}" class="footer-link" target="_blank">LinkedIn</a>
-    {% endif %}
-    {% if email %}
-    <a href="mailto:{{ email }}" class="footer-link">Email</a>
-  {% endif %}
-  {% if phone %}
-    <a href="tel:{{ phone }}" class="footer-link">Phone</a>
-  {% endif %}
-  
+    
+    <div class="contact-info flex justify-center gap-6 text-2xl mt-4 text-[#3F1A2B]">
+      {% if email %}
+        <a href="mailto:{{ email }}" class="hover:text-[#B2183A]" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      {% endif %}
+      
+      {% if github %}
+        <a href="{{ github }}" target="_blank" class="hover:text-[#B2183A]" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      {% endif %}
+      
+      {% if linkedin %}
+        <a href="{{ linkedin }}" target="_blank" class="hover:text-[#B2183A]" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      {% endif %}
+      
+      {% if phone %}
+        <a href="tel:{{ phone }}" class="hover:text-[#B2183A]" title="Phone">
+          <i class="fas fa-phone"></i>
+        </a>
+      {% endif %}
+    </div>
   </footer>
+  
 <!-- Add AOS JS -->
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 

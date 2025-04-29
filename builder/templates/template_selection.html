@@ -21,7 +21,7 @@
   <p>Choose one of the following templates to start customizing:</p>
 
   <!-- Directly placing the preview image without template-item wrapper -->
-   <h1>Template 1</h1>
+   <h2>Template 1</h2>
   <div class="template-preview">
     <img id="main-image" src="{% static 'images/template1_preview.png' %}" alt="Template 1 Preview">
   </div>
@@ -30,6 +30,7 @@
   <div class="thumbnail-container">
     <img class="thumbnail" src="{% static 'images/template1_section1.png' %}" alt="Template Section 1" onclick="changePreviewImage(this)">
     <img class="thumbnail" src="{% static 'images/template1_section2.png' %}" alt="Template Section 2" onclick="changePreviewImage(this)">
+    <img class="thumbnail" src="{% static 'images/template1_preview.png' %}" alt="Template Section 3" onclick="changePreviewImage(this)">
     <!-- Add more images as needed -->
   </div>
   
@@ -54,7 +55,7 @@
     {% csrf_token %}
     <button type="submit" name="template" value="template1">Select Template 2</button>
   </form>
-
+<br><br><br><br><br><br><br><br><br>
   <script>
     document.addEventListener('mousemove', function(e) {
         const floaters = document.querySelectorAll('.floater');

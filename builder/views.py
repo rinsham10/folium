@@ -30,6 +30,7 @@ def submit_portfolio(request):
         project_descs = request.POST.getlist('project_desc[]')
         project_stacks = request.POST.getlist('project_stack[]')
         project_links = request.POST.getlist('project_link[]')
+        project_githubs = request.POST.getlist('project_github[]')
 
         # Collect multiple experience data
         experience = []
@@ -37,6 +38,7 @@ def submit_portfolio(request):
         company_names = request.POST.getlist('company_name[]')
         job_descs = request.POST.getlist('job_desc[]')
         durations = request.POST.getlist('duration[]')
+        locations = request.POST.getlist('location[]')
 
         for i in range(len(job_titles)):
             if job_titles[i] and company_names[i]:
@@ -44,7 +46,8 @@ def submit_portfolio(request):
                     'job_title': job_titles[i],
                     'company_name': company_names[i],
                     'job_desc': job_descs[i],
-                    'duration': durations[i]
+                    'duration': durations[i],
+                    'location': locations[i]
                 })
 
         # Collect multiple education data
@@ -72,7 +75,8 @@ def submit_portfolio(request):
                     'title': project_titles[i],
                     'description': project_descs[i],
                     'stack': project_stacks[i],
-                    'link': project_links[i]
+                    'link': project_links[i],
+                    'github': project_githubs[i] if i < len(project_githubs) else ''
                 })
 
         # Get selected template

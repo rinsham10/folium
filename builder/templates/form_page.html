@@ -25,6 +25,9 @@
           
           <label for="project_link">Project Link:</label>
           <input type="text" name="project_link[]" placeholder="Project Link"><br>
+
+          <label for="project_github_1">Project GitHub 1:</label>
+          <input type="text" name="project_github[]" id="project_github_1" placeholder="GitHub Repo Link"><br>
         `;
       } else if (section === 'experience') {
         newEntry.innerHTML = `
@@ -37,8 +40,12 @@
           <label for="job_desc">Job Description:</label>
           <textarea name="job_desc[]" placeholder="Job Description"></textarea><br>
           
+          <label for="location">Job Location 1:</label>
+          <input type="text" name="location[]" id="location1" placeholder="Job Location"><br>
+
           <label for="duration">Duration:</label>
           <input type="text" name="duration[]" placeholder="Duration"><br>
+
         `;
       } else if (section === 'education') {
         newEntry.innerHTML = `
@@ -98,8 +105,12 @@
         <label for="project_stack_1">Project Stack 1:</label>
         <input type="text" name="project_stack[]" id="project_stack_1" placeholder="Tech Stack"><br>
         
-        <label for="project_link_1">Project Link 1:</label>
+        <label for="project_link_1">Project Live Demo 1:</label>
         <input type="text" name="project_link[]" id="project_link_1" placeholder="Project Link"><br>
+
+        <label for="project_github_1">GitHub Repo Link 1:</label>
+        <input type="text" name="project_github[]" id="project_github_1" placeholder="GitHub Repository Link">
+
       </div>
     </div>
     <button type="button" onclick="addField('projects')">Add More Projects</button><br>
@@ -117,8 +128,12 @@
         <label for="job_desc_1">Job Description 1:</label>
         <textarea name="job_desc[]" id="job_desc_1" placeholder="Job Description"></textarea><br>
         
+        <label for="location">Job Location 1:</label>
+        <input type="text" name="location[]" id="location1" placeholder="Job Location"><br>
+
         <label for="duration_1">Duration 1:</label>
         <input type="text" name="duration[]" id="duration_1" placeholder="Duration"><br>
+
       </div>
     </div>
     <button type="button" onclick="addField('experience')">Add More Experience</button><br>

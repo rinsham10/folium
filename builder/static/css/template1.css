@@ -41,8 +41,6 @@ a {
   word-break: break-word; /* Prevent very long words from overflowing */
 }
 
-
-
 .intro {
   color: #64ffda;
   font-size: 2rem;
@@ -134,9 +132,15 @@ a {
 .project-link {
   display: inline-block;
   margin-top: 1rem;
+  margin-right: 1.5rem;
   color: #64ffda;
   font-weight: bold;
 }
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
 
 .tech-stack {
   font-size: 0.9rem;
@@ -156,12 +160,20 @@ footer {
   color: #64ffda;
 }
 
-.experience-item, .education-item {
+.experience-item,
+.education-item {
   background: #112240;
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
+  transition: transform 0.3s ease; /* Add this for hover transition */
 }
+
+.experience-item:hover,
+.education-item:hover {
+  transform: translateY(-10px); /* Match project-card hover */
+}
+
 
 .side-nav {
   position: fixed;

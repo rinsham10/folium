@@ -66,7 +66,7 @@
       <div class="project-cards">
         {% for project in project_data %}
         <div class="project-card">
-          <h3>{{ project.title }}</h3>
+          <h2>{{ project.title }}</h2>
           <p>{{ project.description }}</p>
           
           {% if project.stack %}
@@ -90,36 +90,41 @@
     
 
     {% if experience %}
-    <section class="experience" id="experience">
-      <h3 class="section-title">Where I've Worked</h3>
-      <div class="experience-list">
-        {% for exp in experience %}
-          <div class="experience-item">
-            <h2 style="display: inline;">{{ exp.job_title }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
-            <h4 style="display: inline;">{{ exp.duration }}</h4>
-            <h3>{{ exp.company_name }} - {{ exp.location }} </h3>
-            <p>{{ exp.job_desc }}</p>
-          </div>
-        {% endfor %}
+<section class="experience" id="experience">
+  <h3 class="section-title">Where I've Worked</h3>
+  <div class="experience-list">
+    {% for exp in experience %}
+    <div class="experience-item">
+      <div class="exp-header">
+        <h2 class="job-title">{{ exp.job_title }}</h2>
+        <h4 class="duration">{{ exp.duration }}</h4>
       </div>
-    </section>
-    {% endif %}
+      <h3 class="company">{{ exp.company_name }} - {{ exp.location }}</h3>
+      <p class="description">{{ exp.job_desc }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
 
-    {% if education %}
-    <section class="education" id="education">
-      <h3 class="section-title">Education</h3>
-      <div class="education-list">
-        {% for edu in education %}
-          <div class="education-item">
-            <h2 style="display: inline;">{{ edu.degree }}&nbsp;&nbsp;&nbsp;&nbsp;</h2>
-            <h4 style="display: inline;">{{ edu.edu_duration }}</h4>
-            <h3>{{ edu.school }} - {{ edu.edu_location }}</h3>
-            <p>{{ edu.edu_desc }}</p>
-          </div>
-        {% endfor %}
+{% if education %}
+<section class="education" id="education">
+  <h3 class="section-title">Education</h3>
+  <div class="education-list">
+    {% for edu in education %}
+    <div class="education-item">
+      <div class="edu-header">
+        <h2 class="degree">{{ edu.degree }}</h2>
+        <h4 class="duration">{{ edu.edu_duration }}</h4>
       </div>
-    </section>
-    {% endif %}
+      <h3 class="school">{{ edu.school }} - {{ edu.edu_location }}</h3>
+      <p class="description">{{ edu.edu_desc }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
   </main>
 
   <footer id="contact">

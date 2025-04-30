@@ -55,13 +55,16 @@ def submit_portfolio(request):
         degrees = request.POST.getlist('degree[]')
         schools = request.POST.getlist('school[]')
         edu_descs = request.POST.getlist('edu_desc[]')
-
+        edu_location = request.POST.getlist('edu_location[]')
+        edu_duration = request.POST.getlist('edu_duration[]')
         for i in range(len(degrees)):
             if degrees[i] and schools[i]:
                 education.append({
                     'degree': degrees[i],
                     'school': schools[i],
-                    'edu_desc': edu_descs[i]
+                    'edu_desc': edu_descs[i],
+                    'edu_location': edu_location[i],
+                    'edu_duration': edu_duration[i]
                 })
 
         # Handle skills list

@@ -95,7 +95,8 @@
       <div class="experience-list">
         {% for exp in experience %}
           <div class="experience-item">
-            <h3>{{ exp.job_title }} - {{ exp.duration }} </h3>
+            <h2 style="display: inline;">{{ exp.job_title }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+            <h4 style="display: inline;">{{ exp.duration }}</h4>
             <h3>{{ exp.company_name }} - {{ exp.location }} </h3>
             <p>{{ exp.job_desc }}</p>
           </div>
@@ -110,7 +111,9 @@
       <div class="education-list">
         {% for edu in education %}
           <div class="education-item">
-            <h4>{{ edu.degree }} - {{ edu.school }}</h4>
+            <h2 style="display: inline;">{{ edu.degree }}&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+            <h4 style="display: inline;">{{ edu.edu_duration }}</h4>
+            <h3>{{ edu.school }} - {{ edu.edu_location }}</h3>
             <p>{{ edu.edu_desc }}</p>
           </div>
         {% endfor %}

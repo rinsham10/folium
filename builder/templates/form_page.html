@@ -57,6 +57,13 @@
           
           <label for="edu_desc">Education Description:</label>
           <textarea name="edu_desc[]" placeholder="Education Description"></textarea><br>
+          
+        <label for="edu_location">Education Location 1:</label>
+        <input type="text" name="edu_location[]" id="edu_location1" placeholder="Education Location"><br>
+
+        <label for="edu_duration_1">Duration 1:</label>
+        <input type="text" name="edu_duration[]" id="edu_duration_1" placeholder="Duration"><br>
+
         `;
       }
       container.appendChild(newEntry);
@@ -150,6 +157,12 @@
         
         <label for="edu_desc_1">Education Description 1:</label>
         <textarea name="edu_desc[]" id="edu_desc_1" placeholder="Education Description"></textarea><br>
+
+        <label for="edu_location">Education Location 1:</label>
+        <input type="text" name="edu_location[]" id="edu_location1" placeholder="Education Location"><br>
+
+        <label for="edu_duration_1">Duration 1:</label>
+        <input type="text" name="edu_duration[]" id="edu_duration_1" placeholder="Duration"><br>
       </div>
     </div>
     <button type="button" onclick="addField('education')">Add More Education</button><br>

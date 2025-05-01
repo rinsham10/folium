@@ -66,27 +66,39 @@
       <h3 class="section-title">Some Things I’ve Built</h3>
       <div class="project-cards">
         {% for project in project_data %}
-        <div class="project-card">
-          <h2>{{ project.title }}</h2>
-          <p>{{ project.description }}</p>
-          
-          {% if project.stack %}
-            <p class="tech-stack">{{ project.stack }}</p>
-          {% endif %}
-          
-          {% if project.link %}
-            <a href="{{ project.link }}" target="_blank" class="project-link">Live Demo</a>
-          {% endif %}
-          {% if project.github %}
-            <a href="{{ project.github }}" target="_blank" class="project-link github-link">
-             <i class="fab fa-github"></i> GitHub</a>
-          {% endif %}          
-        </div>
+          <div class="project-card">
+            <h2>{{ project.title }}</h2>
+  
+            <!-- Always show the description, even if it's empty (only hide if no description is provided) -->
+            {% if project.description %}
+              <p>{{ project.description }}</p>
+            {% else %}
+              <p class="no-description">No description available</p>
+            {% endif %}
+  
+            <!-- Show tech stack if provided -->
+            {% if project.stack %}
+              <p class="tech-stack">{{ project.stack }}</p>
+            {% endif %}
+  
+            <!-- Show link if provided -->
+            {% if project.link %}
+              <a href="{{ project.link }}" target="_blank" class="project-link">Live Demo</a>
+            {% endif %}
+  
+            <!-- Show GitHub link if provided -->
+            {% if project.github %}
+              <a href="{{ project.github }}" target="_blank" class="project-link github-link">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            {% endif %}
+          </div>
         {% endfor %}
       </div>
       <br><br>
     </section>
-    {% endif %}
+  {% endif %}
+  
     
 
     {% if experience %}

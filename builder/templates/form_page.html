@@ -87,7 +87,7 @@
     {% csrf_token %}
 
     <!-- Basic Information -->
-    <label for="name">Full Name:</label>
+    <label for="name">*Full Name:</label>
     <input type="text" name="name" id="name" required><br>
 
     <!-- Bio Section -->
@@ -106,7 +106,7 @@
         <label for="project_title_1">Project Title 1:</label>
         <input type="text" name="project_title[]" id="project_title_1" placeholder="Project Title"><br>
         
-        <label for="project_desc_1">Project Description 1:</label>
+        <label for="project_desc_1">*Project Description 1:</label>
         <textarea name="project_desc[]" id="project_desc_1" placeholder="Project Description"></textarea><br>
         
         <label for="project_stack_1">Project Stack 1:</label>

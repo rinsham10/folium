@@ -8,6 +8,7 @@ body {
     text-align: center;
     line-height: 1.6;
     overflow-x: hidden;
+    transition: all 0.3s ease;
 }
 
 /* Heading */
@@ -29,7 +30,6 @@ h2 {
     margin-bottom: 1px;
     animation: fadeIn 1.5s ease-in-out;
 }
-
 
 /* Paragraph */
 p {
@@ -63,7 +63,6 @@ p {
     transition: transform 0.3s ease;
     border-radius: 15px;
 }
-
 
 /* Hover Effect */
 .template-preview img:hover {
@@ -164,4 +163,75 @@ form button:hover {
 @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(30px); }
     100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    /* Heading */
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+    }
+
+    /* Template Preview */
+    .template-preview {
+        height: 500px; /* Reduce height on mobile */
+    }
+
+    /* Button */
+    form button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    /* Thumbnail */
+    .thumbnail {
+        width: 150px;
+        height: 80px;
+    }
+
+    /* Thumbnail Container */
+    .thumbnail-container {
+        flex-direction: column; /* Stack thumbnails vertically */
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Heading */
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    /* Template Preview */
+    .template-preview {
+        height: 400px;
+    }
+
+    /* Button */
+    form button {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+    }
+
+    /* Thumbnail */
+    .thumbnail {
+        width: 130px;
+        height: 70px;
+    }
 }

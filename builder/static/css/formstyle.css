@@ -8,6 +8,7 @@
     box-sizing: border-box;
 }
 
+/* Body */
 body {
     font-family: 'Roboto', sans-serif; /* Changed to Roboto */
     background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
@@ -17,6 +18,8 @@ body {
     animation: fadeIn 1s ease-in;
     display: block;
 }
+
+/* Heading */
 h1{
     margin-bottom: 2rem;
     text-align: center;
@@ -25,7 +28,7 @@ h1{
     color: #000000;
 }
 
- h2, h3 {
+h2, h3 {
     margin-bottom: 2rem;
     text-align: center;
     font-family: 'Poppins', sans-serif; /* Changed to Poppins */
@@ -33,6 +36,7 @@ h1{
     color: #000000;
 }
 
+/* Form */
 form {
     width: 100%;
     max-width: 900px;
@@ -46,12 +50,14 @@ form {
     animation: floatUp 0.7s ease-out;
 }
 
+/* Form Labels */
 label {
     display: block;
     margin-top: 1.2rem;
     font-weight: 600;
 }
 
+/* Input & Textarea */
 input[type="text"],
 input[type="url"],
 textarea {
@@ -65,6 +71,7 @@ textarea {
     transition: all 0.3s;
 }
 
+/* Input & Textarea Focus */
 input[type="text"]:focus,
 input[type="url"]:focus,
 textarea:focus {
@@ -72,12 +79,14 @@ textarea:focus {
     outline: none;
 }
 
+/* Textarea */
 textarea {
     min-height: 120px;
     resize: vertical;
     background-color: rgb(219, 244, 255);
 }
 
+/* Entry Box */
 .entry {
     margin-bottom: 2rem;
     padding: 1rem;
@@ -85,6 +94,7 @@ textarea {
     border-radius: 8px;
 }
 
+/* Buttons */
 button[type="button"],
 button[type="submit"] {
     margin-top: 1.5rem;
@@ -99,12 +109,13 @@ button[type="submit"] {
     transition: background-color 0.3s;
 }
 
+/* Button Hover */
 button[type="button"]:hover,
 button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-/* Section titles */
+/* Section Titles */
 h3 {
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -112,14 +123,26 @@ h3 {
     padding-bottom: 0.5rem;
 }
 
-/* Responsive */
+/* Mobile Responsive */
 @media (max-width: 600px) {
+    body {
+        padding: 2rem 1rem;
+    }
+
     form {
         padding: 1.5rem 2rem;
     }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2, h3 {
+        font-size: 1.75rem;
+    }
 }
 
-/* Floating background elements */
+/* Floating Background Elements */
 .background-floaters {
     position: fixed;
     top: 0;
@@ -130,6 +153,7 @@ h3 {
     z-index: -1;
 }
 
+/* Floaters */
 .floater {
     position: absolute;
     width: 60px;
@@ -190,7 +214,7 @@ h3 {
     left: 10%;
 }
 
-/* Floating animation */
+/* Floating Animation */
 @keyframes floatAround {
     0% {
         transform: translate(-50%, -50%) translate(0, 0) rotate(0deg);
@@ -201,4 +225,10 @@ h3 {
     100% {
         transform: translate(-50%, -50%) translate(0, 0) rotate(360deg);
     }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
 }

@@ -99,18 +99,9 @@ a {
 
 .skills-grid li:hover {
   border: 2px solid #64ffda; /* No layout shift since border is already defined */
-  transform: translateY(-6px) scale(1.05); /* Optional extra hover effect */
 }
 
 
-@keyframes popIn {
-  0% { opacity: 0; transform: scale(0.8); }
-  100% { opacity: 1; transform: scale(1); }
-}
-
-.skills-grid li {
-  animation: popIn 0.5s ease forwards;
-}
 
 .project-cards {
   display: grid;
@@ -258,4 +249,136 @@ footer {
   margin-top: 0.5rem;
   color: #a8b2d1;
   line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 1rem;
+    min-height: auto;
+  }
+
+  .name {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .intro {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .project-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    padding: 1rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .project-link {
+    margin-top: auto;
+  }
+
+  .experience-item,
+  .education-item {
+    padding: 1rem;
+  }
+
+  .exp-header,
+  .edu-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cta-button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .side-nav {
+    display: none; /* Hide sidebar on mobile */
+  }
+
+  footer {
+    padding: 50px 1rem;
+  }
+
+  .contact-info a {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
+/* === Mobile Navigation Toggle Button === */
+.mobile-nav-toggle {
+  display: none;
+  font-size: 2rem;
+  color: #64ffda;
+  position: fixed;
+  top: 1rem;
+  right: 1.5rem;
+  z-index: 1001;
+  cursor: pointer;
+}
+
+/* === Mobile Navigation Menu === */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #112240;
+  height: 100vh;
+  width: 70%;
+  max-width: 300px;
+  z-index: 1000;
+  padding: 2rem;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+}
+
+.mobile-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.mobile-nav li {
+  margin: 1.5rem 0;
+}
+
+.mobile-nav a {
+  color: #64ffda;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* === Show on Mobile Only === */
+@media (max-width: 768px) {
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .side-nav {
+    display: none;
+  }
 }

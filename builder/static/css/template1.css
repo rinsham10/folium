@@ -1,16 +1,21 @@
 body {
   background-color: #0a192f;
-  color: #ccd6f6;
+  color: #64ffd0;
   font-family: 'Fira Sans', sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.6;
 }
 
+p{
+  color: #ffffff;
+}
+
 a {
-  color: #64ffda;
+  color: #64ffd0;
   text-decoration: none;
 }
+
 
 .section-title {
   font-size: 3rem;
@@ -227,7 +232,7 @@ footer {
 
 .job-title, .degree {
   font-size: 1.5rem;
-  color: #ccd6f6;
+  color: #64ffda;
   font-weight: 600;
   margin: 0;
 }
@@ -241,7 +246,7 @@ footer {
 
 .company, .school {
   font-size: 1.2rem;
-  color: #64ffda;
+  color: #ffffff;
   margin: 0.25rem 0;
 }
 

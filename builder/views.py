@@ -123,3 +123,4 @@ def view_portfolio(request, slug):
         'experience': portfolio.experiences.all(),
         'education': portfolio.educations.all(),
     })
+

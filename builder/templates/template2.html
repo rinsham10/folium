@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ name }}'s Portfolio</title>
-  <link rel="stylesheet" href="{% static 'css/template1.css' %}">
+  <link rel="stylesheet" href="{% static 'css/template2.css' %}">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- Add AOS CSS -->
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -92,7 +92,7 @@
   
             <!-- Show tech stack if provided -->
             {% if project.stack %}
-              <p class="tech-stack">Tech Stack: {{ project.stack }}</p>
+              <p class="tech-stack">{{ project.stack }}</p>
             {% endif %}
   
             <!-- Show link if provided -->
@@ -103,7 +103,8 @@
             <!-- Show GitHub link if provided -->
             {% if project.github %}
               <a href="{{ project.github }}" target="_blank" class="project-link github-link">
-                <i class="fab fa-github"></i> GitHub</a>
+                <i class="fab fa-github"></i> GitHub
+              </a>
             {% endif %}
           </div>
         {% endfor %}
@@ -157,6 +158,7 @@
   <footer id="contact">
     <h3 class="section-title">Get In Touch</h3>
     <p>I’m currently looking for new opportunities. Feel free to say hi!</p>
+    
     <div class="contact-info flex justify-center gap-6 text-2xl mt-4 text-[#3F1A2B]">
       {% if email %}
         <a href="mailto:{{ email }}" class="hover:text-[#B2183A]" title="Email">

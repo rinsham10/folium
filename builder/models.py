@@ -28,6 +28,7 @@ class Portfolio(models.Model):
 class Project(models.Model):
     portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE, related_name='projects')
     title = models.CharField(max_length=100)
+    project_duration = models.CharField(max_length=100, blank=True)
     description = models.TextField(blank=True)
     stack = models.CharField(max_length=200, blank=True)
     link = models.URLField(blank=True)

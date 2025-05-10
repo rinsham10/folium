@@ -1,212 +1,138 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% load static %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ name }}'s Portfolio</title>
   <link rel="stylesheet" href="{% static 'css/template2.css' %}">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Add AOS CSS -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- Hamburger Icon (Mobile Only) -->
-<div class="mobile-nav-toggle" id="mobileToggle">
-  ☰
-</div>
+  <header class="hero" data-aos="fade-down">
+    <div class="container">
+      <h1>Hello, I'm <span>{{ name }}</span></h1>
+      {% if bio %}
+        <p>{{ bio }}</p>
+      {% endif %}
+      <a href="#contact" class="btn">Contact Me</a>
+    </div>
+  </header>
 
-<!-- Mobile Navigation Menu -->
-<nav class="mobile-nav" id="mobileNav">
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+  <nav class="navbar">
+    <div class="container">
+      <ul>
+        {% if skills %}<li><a href="#skills">Skills</a></li>{% endif %}
+        {% if project_data %}<li><a href="#projects">Projects</a></li>{% endif %}
+        {% if experience %}<li><a href="#experience">Experience</a></li>{% endif %}
+        {% if education %}<li><a href="#education">Education</a></li>{% endif %}
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<nav class="side-nav">
-  <ul>
-    {% if skills %}
-    <li><a href="#about">Skills</a></li>
-    {% endif %}
-    {% if project_data %}
-      <li><a href="#projects">Projects</a></li>
-    {% endif %}
-    {% if experience %}
-      <li><a href="#experience">Experience</a></li>
-    {% endif %}
-    {% if education %}
-      <li><a href="#education">Education</a></li>
-    {% endif %}
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-  <header class="hero" data-aos="fade-up">
-  <h1 class="intro">Hi, my name is</h1>
-  <h2 class="name">{{ name }}.</h2>
-  {% if bio %}
-    <p class="subtitle">{{ bio }}</p><br>
-  {% endif %}
-  <a href="#contact" class="cta-button">Get In Touch</a>
-</header>
   <main>
     {% if skills %}
-    <section class="about" id="about">
-      <h3 class="section-title">Skills</h3>
-      <div class="about-content">
-        <ul class="skills-grid">
+    <section id="skills" class="section" data-aos="fade-up">
+      <div class="container">
+        <h2>Skills</h2>
+        <ul class="skills-list">
           {% for skill in skills %}
             <li>{{ skill }}</li>
           {% endfor %}
         </ul>
       </div>
-      <br><br><br>
     </section>
     {% endif %}
 
     {% if project_data %}
-    <section class="projects" id="projects">
-      <h3 class="section-title">Some Things I’ve Built</h3>
-      <div class="project-cards">
-        {% for project in project_data %}
+    <section id="projects" class="section" data-aos="fade-up">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          {% for project in project_data %}
           <div class="project-card">
-            <h2>{{ project.title }}</h2>
-  
-            <!-- Always show the description, even if it's empty (only hide if no description is provided) -->
-            {% if project.description %}
-              <p>{{ project.description }}</p>
-            {% else %}
-              <p class="no-description">No description available</p>
-            {% endif %}
-  
-            <!-- Show tech stack if provided -->
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
             {% if project.stack %}
-              <p class="tech-stack">{{ project.stack }}</p>
+              <p><strong>Tech Stack:</strong> {{ project.stack }}</p>
             {% endif %}
-  
-            <!-- Show link if provided -->
-            {% if project.link %}
-              <a href="{{ project.link }}" target="_blank" class="project-link">Live Demo</a>
-            {% endif %}
-  
-            <!-- Show GitHub link if provided -->
-            {% if project.github %}
-              <a href="{{ project.github }}" target="_blank" class="project-link github-link">
-                <i class="fab fa-github"></i> GitHub
-              </a>
-            {% endif %}
+            <div class="project-links">
+              {% if project.link %}
+                <a href="{{ project.link }}" target="_blank">Live Demo</a>
+              {% endif %}
+              {% if project.github %}
+                <a href="{{ project.github }}" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+              {% endif %}
+            </div>
           </div>
-        {% endfor %}
+          {% endfor %}
+        </div>
       </div>
-      <br><br>
     </section>
-  {% endif %}
-  
-    
+    {% endif %}
 
     {% if experience %}
-<section class="experience" id="experience">
-  <h3 class="section-title">Where I've Worked</h3>
-  <div class="experience-list">
-    {% for exp in experience %}
-    <div class="experience-item">
-      <div class="exp-header">
-        <h2 class="job-title">{{ exp.job_title }}</h2>
-        <h4 class="duration">{{ exp.duration }}</h4>
+    <section id="experience" class="section" data-aos="fade-up">
+      <div class="container">
+        <h2>Experience</h2>
+        {% for exp in experience %}
+        <div class="experience-item">
+          <h3>{{ exp.job_title }} at {{ exp.company_name }}</h3>
+          <p class="duration">{{ exp.duration }}</p>
+          <p>{{ exp.job_desc }}</p>
+        </div>
+        {% endfor %}
       </div>
-      <h3 class="company">{{ exp.company_name }} - {{ exp.location }}</h3>
-      <p class="description">{{ exp.job_desc }}</p>
-    </div>
-    {% endfor %}
-  </div>
-  <br><br>
-</section>
-{% endif %}
+    </section>
+    {% endif %}
 
-{% if education %}
-<section class="education" id="education">
-  <h3 class="section-title">Education</h3>
-  <div class="education-list">
-    {% for edu in education %}
-    <div class="education-item">
-      <div class="edu-header">
-        <h2 class="degree">{{ edu.degree }}</h2>
-        <h4 class="duration">{{ edu.edu_duration }}</h4>
+    {% if education %}
+    <section id="education" class="section" data-aos="fade-up">
+      <div class="container">
+        <h2>Education</h2>
+        {% for edu in education %}
+        <div class="education-item">
+          <h3>{{ edu.degree }} from {{ edu.school }}</h3>
+          <p class="duration">{{ edu.edu_duration }}</p>
+          <p>{{ edu.edu_desc }}</p>
+        </div>
+        {% endfor %}
       </div>
-      <h3 class="school">{{ edu.school }} - {{ edu.edu_location }}</h3>
-      <p class="description">{{ edu.edu_desc }}</p>
-    </div>
-    {% endfor %}
-  </div>
-  <br>
-</section>
-{% endif %}
-
+    </section>
+    {% endif %}
   </main>
 
-  <footer id="contact">
-    <h3 class="section-title">Get In Touch</h3>
-    <p>I’m currently looking for new opportunities. Feel free to say hi!</p>
-    
-    <div class="contact-info flex justify-center gap-6 text-2xl mt-4 text-[#3F1A2B]">
-      {% if email %}
-        <a href="mailto:{{ email }}" class="hover:text-[#B2183A]" title="Email">
-          <i class="fas fa-envelope"></i>
-        </a>
-      {% endif %}
-      
-      {% if github %}
-        <a href="{{ github }}" target="_blank" class="hover:text-[#B2183A]" title="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-      {% endif %}
-      
-      {% if linkedin %}
-        <a href="{{ linkedin }}" target="_blank" class="hover:text-[#B2183A]" title="LinkedIn">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      {% endif %}
-      
-      {% if phone %}
-        <a href="tel:{{ phone }}" class="hover:text-[#B2183A]" title="Phone">
-          <i class="fas fa-phone"></i>
-        </a>
-      {% endif %}
+  <footer id="contact" class="section" data-aos="fade-up">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>If you're interested in working together or have any questions, feel free to reach out!</p>
+      <div class="contact-info">
+        {% if email %}
+          <a href="mailto:{{ email }}"><i class="fas fa-envelope"></i></a>
+        {% endif %}
+        {% if github %}
+          <a href="{{ github }}" target="_blank"><i class="fab fa-github"></i></a>
+        {% endif %}
+        {% if linkedin %}
+          <a href="{{ linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>
+        {% endif %}
+        {% if phone %}
+          <a href="tel:{{ phone }}"><i class="fas fa-phone"></i></a>
+        {% endif %}
+      </div>
     </div>
   </footer>
-  
-<!-- Add AOS JS -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
-<script>
-  AOS.init({
-    offset: 100,  // distance in px from the top of the screen when the element is triggered
-    duration: 600,  // duration of the animation in milliseconds
-    easing: 'ease-in-out',  // easing function for the animation
-    delay: 100,  // delay before the animation starts
-    once: true,  // whether animation should happen only once
-  });
-</script>
-
-<script>
-  const toggle = document.getElementById('mobileToggle');
-  const nav = document.getElementById('mobileNav');
-
-  toggle.addEventListener('click', () => {
-    nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
-  });
-</script>
-
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+    });
+  </script>
 </body>
 </html>

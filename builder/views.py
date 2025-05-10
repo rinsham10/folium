@@ -25,6 +25,9 @@ def submit_portfolio(request):
         email = request.POST.get('email')
         phone = request.POST.get('phone')
 
+         # Get selected template from session
+        selected_template = request.session.get('selected_template', 'template1')
+
         # Create Portfolio
         portfolio = Portfolio.objects.create(
             name=name,
@@ -39,6 +42,7 @@ def submit_portfolio(request):
 
         # Projects
         titles = request.POST.getlist('project_title[]')
+        project_durations = request.POST.getlist('project_duration[]')
         descs = request.POST.getlist('project_desc[]')
         stacks = request.POST.getlist('project_stack[]')
         links = request.POST.getlist('project_link[]')
@@ -49,6 +53,7 @@ def submit_portfolio(request):
                 Project.objects.create(
                     portfolio=portfolio,
                     title=titles[i],
+                    project_duration=project_durations[i],
                     description=descs[i] if i < len(descs) else '',
                     stack=stacks[i] if i < len(stacks) else '',
                     link=links[i] if i < len(links) else '',
@@ -91,8 +96,11 @@ def submit_portfolio(request):
                     edu_duration=edu_durations[i]
                 )
 
-        # Redirect to portfolio URL
-        return redirect('view_portfolio', slug=portfolio.slug)
+        # Redirect to the correct template view based on selection
+        if selected_template == 'template2':
+            return redirect('view_template2', slug=portfolio.slug)
+        else:
+            return redirect('view_portfolio', slug=portfolio.slug)
 
     return redirect('home')
 
@@ -105,6 +113,7 @@ def view_portfolio(request, slug):
         project_data.append({
             'title': project.title,
             'description': project.description,
+            'duration': project.project_duration,
             'stack': project.stack,
             'link': project.link if project.link.startswith('http') else 'https://rinsham10.github.io/AgriSens/',
             'github': project.github if project.github.startswith('http') else ''
@@ -123,4 +132,33 @@ def view_portfolio(request, slug):
         'experience': portfolio.experiences.all(),
         'education': portfolio.educations.all(),
     })
+
+def view_template2(request, slug):
+    portfolio = get_object_or_404(Portfolio, slug=slug)
+
+    project_data = []
+    for project in portfolio.projects.all():
+        project_data.append({
+            'title': project.title,
+            'description': project.description,
+            'duration': project.project_duration,
+            'stack': project.stack,
+            'link': project.link if project.link.startswith('http') else '',
+            'github': project.github if project.github.startswith('http') else ''
+        })
+
+    return render(request, 'template2.html', {
+        'name': portfolio.name,
+        'title': portfolio.title,
+        'bio': portfolio.bio,
+        'skills': [s.strip() for s in portfolio.skills.split(',')],
+        'github': portfolio.github,
+        'linkedin': portfolio.linkedin,
+        'email': portfolio.email,
+        'phone': portfolio.phone,
+        'project_data': project_data,
+        'experience': portfolio.experiences.all(),
+        'education': portfolio.educations.all(),
+    })
+
 

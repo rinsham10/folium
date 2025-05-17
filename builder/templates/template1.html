@@ -90,8 +90,6 @@
         {% for project in project_data %}
           <div class="project-card">
             <h2>{{ project.title }}</h2>
-            <h4>{{ project.project_duration }}</h4>
-            <p>DEBUG: {{ project.project_duration }}</p>
 
             <!-- Always show the description, even if it's empty (only hide if no description is provided) -->
             {% if project.description %}

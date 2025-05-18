@@ -23,15 +23,14 @@
   <!-- Directly placing the preview image without template-item wrapper -->
    <h2>Template 1</h2>
   <div class="template-preview">
-    <img id="main-image" src="{% static 'images/template1_preview.png' %}" alt="Template 1 Preview">
+    <img id="main-image-1" src="{% static 'images/template1_preview.png' %}" alt="Template 1 Preview">
   </div>
   
   <!-- Thumbnails for additional images -->
   <div class="thumbnail-container">
-    <img class="thumbnail" src="{% static 'images/template1_section1.png' %}" alt="Template Section 1" onclick="changePreviewImage(this)">
-    <img class="thumbnail" src="{% static 'images/template1_section2.png' %}" alt="Template Section 2" onclick="changePreviewImage(this)">
-    <img class="thumbnail" src="{% static 'images/template1_preview.png' %}" alt="Template Section 3" onclick="changePreviewImage(this)">
-    <!-- Add more images as needed -->
+     <img class="thumbnail" src="{% static 'images/template1_preview.png' %}" alt="Template Section 3" onclick="changePreviewImage('main-image-1', this)">
+     <img class="thumbnail" src="{% static 'images/template1_section1.png' %}" alt="Template Section 1" onclick="changePreviewImage('main-image-1', this)">
+     <img class="thumbnail" src="{% static 'images/template1_section2.png' %}" alt="Template Section 2" onclick="changePreviewImage('main-image-1', this)">
   </div>
   
   <form method="post" action="{% url 'form_page' %}">
@@ -41,13 +40,15 @@
 
   <h1>Template 2</h1>
   <div class="template-preview">
-    <img id="main-image" src="{% static 'images/template2_preview.png' %}" alt="Template 1 Preview">
+    <img id="main-image-2" src="{% static 'images/template2_preview.png' %}" alt="Template 2 Preview">
   </div>
   
   <!-- Thumbnails for additional images -->
   <div class="thumbnail-container">
-    <img class="thumbnail" src="{% static 'images/template1_section1.png' %}" alt="Template Section 1" onclick="changePreviewImage(this)">
-    <img class="thumbnail" src="{% static 'images/template1_section2.png' %}" alt="Template Section 2" onclick="changePreviewImage(this)">
+    <img class="thumbnail" src="{% static 'images/template2_preview.png' %}" alt="Template Section 3" onclick="changePreviewImage('main-image-2', this)">
+    <img class="thumbnail" src="{% static 'images/template2_section1.png' %}" alt="Template Section 1" onclick="changePreviewImage('main-image-2', this)">
+    <img class="thumbnail" src="{% static 'images/template2_section2.png' %}" alt="Template Section 2" onclick="changePreviewImage('main-image-2', this)">
+    
     <!-- Add more images as needed -->
   </div>
   
@@ -73,10 +74,12 @@
     });
 
     // Function to change the main preview image when a thumbnail is clicked
-    function changePreviewImage(thumbnail) {
-        var mainImage = document.getElementById('main-image');
-        mainImage.src = thumbnail.src; // Update the main image source with the thumbnail's source
-    }
+  function changePreviewImage(imageId, thumbnail) {
+      var mainImage = document.getElementById(imageId);
+      if (mainImage) {
+          mainImage.src = thumbnail.src;
+      }
+  }
   </script>
 </body>
 </html>
